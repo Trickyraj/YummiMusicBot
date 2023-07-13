@@ -21,6 +21,10 @@
         "description": "Get this value from https://my.telegram.org",
         "value": "",
         "required": true
+      },"START_IMG_URL": {
+        "description": "Ja kar patel se mag la ",
+        "value": "",
+        "required": true
       },
       "BOT_TOKEN": {
         "description": "A Bot's token from Botfather",
