@@ -53,7 +53,7 @@ async def init():
     await Yummi.start()
     try:
         await Yummi.stream_call(
-            "https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4"
+            "https://te.legra.ph/file/1410f0e3dc9c58fc85e12.mp4"
         )
     except NoActiveGroupCall:
         LOGGER("YummiMusic").error(
