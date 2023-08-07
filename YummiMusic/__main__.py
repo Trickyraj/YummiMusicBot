@@ -53,7 +53,7 @@ async def init():
     await Yummi.start()
     try:
         await Yummi.stream_call(
-            "https://te.legra.ph/file/1410f0e3dc9c58fc85e12.mp4"
+            "https://te.legra.ph/file/43796f8902e4e945d7c64.mp4"
         )
     except NoActiveGroupCall:
         LOGGER("YummiMusic").error(
@@ -63,7 +63,7 @@ async def init():
     except:
         pass
     await Yummi.decorators()
-    LOGGER("YummiMusic").info("Yummi Music start               Your Girlfriend Is Very Dangerous is ko sambhalna aapki bus ki baat Na hai apni girlfriend ke number Amisha Patel mein fenk Maro")
+    LOGGER("YummiMusic").info("Yummi Music start n/ Your Girlfriend Is Very Dangerous n/ is ko sambhalna aapki bus ki baat Na hai apni girlfriend ke number Amisha Patel mein fenk Maro")
     await idle()
 
 
