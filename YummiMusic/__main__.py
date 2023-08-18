@@ -63,7 +63,7 @@ async def init():
     except:
         pass
     await Yummi.decorators()
-    LOGGER("YummiMusic").info("Yummi Music start n/ Your Girlfriend Is Very Dangerous n/ is ko sambhalna aapki bus ki baat Na hai apni girlfriend ke number Amisha Patel mein fenk Maro")
+    LOGGER("YummiMusic").info("Yummi Started By Trickyraj")
     await idle()
 
 
