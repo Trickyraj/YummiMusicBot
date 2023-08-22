@@ -1,6 +1,6 @@
-.env
+p.env
 .cache
-logs.txt
+log.txt
 .DS_Store
 *.session
 raw_files/
