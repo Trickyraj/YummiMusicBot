@@ -63,7 +63,7 @@ async def init():
     except:
         pass
     await Yummi.decorators()
-    LOGGER("YummiMusic").info("Yummi Started By Trickyraj")
+    LOGGER("YummiMusic").info("Start YummiMusicBot \n\n\n\n╔═════ஜ۩۞۩ஜ════╗\n  🍁𝐑𝐢𝐭𝐢𝐤𝐫𝐚𝐣🥀  \n╚═════ஜ۩۞۩ஜ════╝ ")
     await idle()
 
 
