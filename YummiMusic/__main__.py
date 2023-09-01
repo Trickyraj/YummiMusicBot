@@ -1,18 +1,16 @@
 import asyncio
 import importlib
-import sys
 
 from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from config import BANNED_USERS
 from YummiMusic import LOGGER, app, userbot
-from YummiMusic.core.call import Yummi
+from YummiMusic.core.call import Anony
+from YummiMusic.misc import sudo
 from YummiMusic.plugins import ALL_MODULES
 from YummiMusic.utils.database import get_banned_users, get_gbanned
-
-loop = asyncio.get_event_loop()
+from config import BANNED_USERS
 
 
 async def init():
@@ -23,17 +21,9 @@ async def init():
         and not config.STRING4
         and not config.STRING5
     ):
-        LOGGER("YummiMusic").error(
-            "WTF Baby ! Atleast add a pyrogram string, How Cheap..."
-        )
-        return
-    if (
-        not config.SPOTIFY_CLIENT_ID
-        and not config.SPOTIFY_CLIENT_SECRET
-    ):
-        LOGGER("YummiMusic").warning(
-            "Sur spotify id aur secret toh daala hi nahi aapne ab toh spotify se nahi chala paaoge gaane."
-        )
+        LOGGER(__name__).error("Assistant client variables not defined, exiting...")
+        exit()
+    await sudo()
     try:
         users = await get_gbanned()
         for user_id in users:
@@ -45,28 +35,28 @@ async def init():
         pass
     await app.start()
     for all_module in ALL_MODULES:
-        importlib.import_module("YummiMusic.plugins." + all_module)
-    LOGGER("YummiMusic.plugins").info(
-        "Necessary Modules Imported Successfully."
-    )
+        importlib.import_module("YummiMusic.plugins" + all_module)
+    LOGGER("YummiMusic.plugins").info("Successfully Imported Modules...")
     await userbot.start()
-    await Yummi.start()
+    await Anony.start()
     try:
-        await Yummi.stream_call(
-            "https://te.legra.ph/file/c088c42f2210534ddc0fa.mp4"
-        )
+        await Anony.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
         LOGGER("YummiMusic").error(
-            "[ERROR] - \n\nHey Baby, firstly open telegram and turn on voice chat in Logger Group else fu*k off. If you ever ended voice chat in log group i will stop working and users will fu*k you up."
+            "Please turn on the videochat of your log group\channel.\n\nStopping Bot..."
         )
-        sys.exit()
+        exit()
     except:
         pass
-    await Yummi.decorators()
-    LOGGER("YummiMusic").info("Start YummiMusicBot \n\n\n\n╔═════ஜ۩۞۩ஜ════╗\n  🍁𝐑𝐢𝐭𝐢𝐤𝐫𝐚𝐣🥀  \n╚═════ஜ۩۞۩ஜ════╝ ")
+    await Anony.decorators()
+    LOGGER("YummiMusic").info(
+        "Start YummiMusicBot \n\n\n\n╔═════ஜ۩۞۩ஜ════╗\n  🍁𝐑𝐢𝐭𝐢𝐤𝐫𝐚𝐣🥀  \n╚═════ஜ۩۞۩ஜ════╝"
+    )
     await idle()
+    await app.stop()
+    await userbot.stop()
+    LOGGER("YummiMusic").info("Stopping Yummi Music Bot...")
 
 
 if __name__ == "__main__":
-    loop.run_until_complete(init())
-    LOGGER("YummiMusic").info("Stopping Music Bot...")
+    asyncio.get_event_loop().run_until_complete(init())
